@@ -1,0 +1,820 @@
+ <!doctype html>
+<html lang="en" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>I.TEC GLOBAL - Elevate Your Brand</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800;900&amp;family=Montserrat:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { height: 100%; width: 100%; }
+    
+    body {
+      font-family: 'Montserrat', sans-serif;
+    }
+    
+    .font-display {
+      font-family: 'Playfair Display', serif;
+    }
+    
+    /* Animated gradient background */
+    .gradient-bg {
+      background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 25%, #0d0d0d 50%, #1f1f1f 75%, #0a0a0a 100%);
+      background-size: 400% 400%;
+      animation: gradientShift 20s ease infinite;
+    }
+    
+    @keyframes gradientShift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+    
+    /* Floating orbs */
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(70px);
+      opacity: 0.25;
+      animation: float 12s ease-in-out infinite;
+    }
+    
+    .orb-1 {
+      width: 350px;
+      height: 350px;
+      background: radial-gradient(circle, #c9a961 0%, #8b7355 100%);
+      top: 15%;
+      left: 5%;
+      animation-delay: 0s;
+    }
+    
+    .orb-2 {
+      width: 450px;
+      height: 450px;
+      background: radial-gradient(circle, #2a2a2a 0%, #0a0a0a 100%);
+      top: 40%;
+      right: 10%;
+      animation-delay: -3s;
+    }
+    
+    .orb-3 {
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, #c9a961 0%, #5a5a5a 100%);
+      bottom: 20%;
+      left: 15%;
+      animation-delay: -6s;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      33% { transform: translate(30px, -30px) scale(1.05); }
+      66% { transform: translate(-20px, 20px) scale(0.95); }
+    }
+    
+    /* Glow effects */
+    .glow-text {
+      text-shadow: 0 0 30px rgba(201, 169, 97, 0.4), 0 0 60px rgba(201, 169, 97, 0.2);
+    }
+    
+    .glow-card {
+      background: rgba(255, 255, 255, 0.02);
+      backdrop-filter: blur(15px);
+      border: 1px solid rgba(201, 169, 97, 0.15);
+      transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    
+    .glow-card:hover {
+      transform: translateY(-15px) scale(1.02);
+      border-color: rgba(201, 169, 97, 0.4);
+      box-shadow: 0 30px 60px rgba(201, 169, 97, 0.15), 0 0 80px rgba(201, 169, 97, 0.08);
+      background: rgba(201, 169, 97, 0.03);
+    }
+    
+    /* Button animations */
+    .btn-glow {
+      position: relative;
+      overflow: hidden;
+      transition: all 0.4s ease;
+      background: linear-gradient(135deg, #c9a961 0%, #a0826d 100%);
+    }
+    
+    .btn-glow::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+      transition: left 0.6s ease;
+    }
+    
+    .btn-glow:hover::before {
+      left: 100%;
+    }
+    
+    .btn-glow:hover {
+      transform: scale(1.05);
+      box-shadow: 0 15px 40px rgba(201, 169, 97, 0.35);
+      background: linear-gradient(135deg, #dbb981 0%, #b8936d 100%);
+    }
+    
+    /* Scroll animations */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(40px);
+      animation: fadeUp 0.8s ease forwards;
+    }
+    
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .stagger-1 { animation-delay: 0.1s; }
+    .stagger-2 { animation-delay: 0.2s; }
+    .stagger-3 { animation-delay: 0.3s; }
+    .stagger-4 { animation-delay: 0.4s; }
+    .stagger-5 { animation-delay: 0.5s; }
+    .stagger-6 { animation-delay: 0.6s; }
+    
+    /* Service icon animations */
+    .service-icon {
+      transition: all 0.4s ease;
+    }
+    
+    .glow-card:hover .service-icon {
+      transform: scale(1.2) rotate(5deg);
+      filter: drop-shadow(0 0 20px currentColor);
+    }
+    
+    /* Marquee animation */
+    .marquee-track {
+      display: flex;
+      animation: marquee 30s linear infinite;
+    }
+    
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    
+    /* Grid pattern overlay */
+    .grid-pattern {
+      background-image: 
+        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 50px 50px;
+    }
+    
+    /* Pulse ring animation */
+    .pulse-ring {
+      animation: pulseRing 2s ease-out infinite;
+    }
+    
+    @keyframes pulseRing {
+      0% {
+        transform: scale(0.8);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(2);
+        opacity: 0;
+      }
+    }
+
+    /* Smooth scroll behavior */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Typewriter effect */
+    .typewriter-text {
+      overflow: hidden;
+      border-right: 3px solid #c9a961;
+      white-space: nowrap;
+      animation: typewriter 4s steps(60, end) forwards, blink 0.75s step-end infinite;
+    }
+
+    @keyframes typewriter {
+      from {
+        width: 0;
+      }
+      to {
+        width: 100%;
+      }
+    }
+
+    @keyframes blink {
+      from, to {
+        border-right-color: #c9a961;
+      }
+      50% {
+        border-right-color: transparent;
+      }
+    }
+
+    .typewriter-container {
+      min-height: 3.5rem;
+      display: flex;
+      align-items: center;
+    }
+  </style>
+  <style>body { box-sizing: border-box; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full w-full gradient-bg text-white overflow-auto">
+  <!-- Background Elements -->
+  <div class="fixed inset-0 grid-pattern pointer-events-none"></div>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div><!-- Main Container -->
+  <div class="relative z-10 w-full min-h-full">
+   <!-- Navigation -->
+   <nav class="w-full px-6 py-5 fade-up">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+     <div class="flex items-center gap-3">
+      <img src="https://i.ibb.co/Q7YZnCJy/IMG-20260306-WA0003.jpg" alt="I.TEC GLOBAL Logo" class="h-12 w-auto object-contain" loading="lazy" onerror="console.error('Logo failed to load:', this.src); this.style.display='none';"><span class="font-display font-bold text-xl bg-gradient-to-r from-[#c9a961] to-[#d4b376] bg-clip-text text-transparent">I.TEC GLOBAL</span>
+     </div>
+     <div class="hidden md:flex items-center gap-8">
+      <a href="#services" class="text-gray-400 hover:text-[#c9a961] transition-colors font-medium">Services</a> <a href="#portfolio" class="text-gray-400 hover:text-[#c9a961] transition-colors font-medium">Portfolio</a> <a href="#about" class="text-gray-400 hover:text-[#c9a961] transition-colors font-medium">About</a> <a href="#contact" class="text-gray-400 hover:text-[#c9a961] transition-colors font-medium">Contact</a> <a href="https://wa.link/ldecwn" target="_blank" rel="noopener noreferrer" class="btn-glow px-6 py-2.5 rounded-full font-semibold text-white inline-block text-center" id="nav-cta"> Get Started </a>
+     </div><button class="md:hidden text-white" onclick="toggleMobileMenu()">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg></button>
+    </div><!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden mt-4 p-4 glow-card rounded-2xl">
+     <div class="flex flex-col gap-4">
+      <a href="#services" class="text-gray-300 hover:text-white transition-colors py-2">Services</a> <a href="#portfolio" class="text-gray-300 hover:text-white transition-colors py-2">Portfolio</a> <a href="#about" class="text-gray-300 hover:text-white transition-colors py-2">About</a> <a href="#contact" class="text-gray-300 hover:text-white transition-colors py-2">Contact</a> <a href="https://wa.link/ldecwn" target="_blank" rel="noopener noreferrer" class="btn-glow px-6 py-2.5 bg-gradient-to-r from-[#e94560] to-[#ff6b6b] rounded-full font-medium w-full text-center inline-block"> Get Started </a>
+     </div>
+    </div>
+   </nav><!-- Hero Section -->
+   <section class="w-full px-6 py-16 md:py-24">
+    <div class="max-w-7xl mx-auto text-center">
+     <div class="fade-up stagger-1">
+      <div class="typewriter-container mb-6 min-h-12">
+       <span class="typewriter-text text-2xl md:text-3xl font-semibold text-[#c9a961]">Welcome to Elite Brand Transformation</span>
+      </div>
+     </div>
+     <h1 id="hero-title" class="font-display text-5xl md:text-7xl lg:text-8xl font-bold leading-tight mb-6 fade-up stagger-2"><span class="glow-text">Elevate</span> Your Brand<br><span class="bg-gradient-to-r from-[#c9a961] via-[#d4b376] to-[#a0826d] bg-clip-text text-transparent">To Billionaire Status</span></h1>
+     <p id="hero-subtitle" class="text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto mb-10 fade-up stagger-3">Luxury brand strategies for exceptional enterprises that demand premium excellence and extraordinary impact.</p>
+     <div class="flex flex-col sm:flex-row gap-4 justify-center fade-up stagger-4">
+      <a href="https://wa.link/ldecwn" target="_blank" rel="noopener noreferrer" class="btn-glow px-8 py-4 rounded-full font-semibold text-lg text-white inline-block text-center"> Start Your Journey </a> <a href="#portfolio" class="px-8 py-4 rounded-full font-semibold text-lg border border-[#c9a961]/30 hover:border-[#c9a961]/60 hover:bg-[#c9a961]/5 transition-all text-gray-300 hover:text-[#c9a961] inline-block text-center"> View Portfolio </a>
+     </div><!-- Stats -->
+     <div class="grid grid-cols-2 md:grid-cols-2 gap-6 mt-20 fade-up stagger-5">
+      <div class="text-center">
+       <div class="font-display text-4xl md:text-5xl font-bold bg-gradient-to-r from-[#c9a961] to-[#d4b376] bg-clip-text text-transparent">
+        98%
+       </div>
+       <div class="text-gray-500 mt-1 font-medium">
+        Enterprise Satisfaction
+       </div>
+      </div>
+      <div class="text-center">
+       <div class="font-display text-4xl md:text-5xl font-bold bg-gradient-to-r from-[#d4b376] to-[#a0826d] bg-clip-text text-transparent">
+        24/7
+       </div>
+       <div class="text-gray-500 mt-1 font-medium">
+        Concierge Support
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Marquee Section -->
+   <section class="w-full py-8 border-y border-white/10 overflow-hidden">
+    <div class="marquee-track">
+     <div class="flex items-center gap-12 px-6 whitespace-nowrap">
+      <span class="text-2xl text-white/20 font-display">BRAND STRATEGY</span> <span class="text-[#e94560]">◆</span> <span class="text-2xl text-white/20 font-display">WEB DESIGN</span> <span class="text-[#e94560]">◆</span> <span class="text-2xl text-white/20 font-display">SOCIAL MEDIA</span> <span class="text-[#e94560]">◆</span> <span class="text-2xl text-white/20 font-display">BRAND SONGS</span> <span class="text-[#e94560]">◆</span> <span class="text-2xl text-white/20 font-display">DIGITAL MARKETING</span> <span class="text-[#e94560]">◆</span> <span class="text-2xl text-white/20 font-display">BRAND IDENTITY</span> <span class="text-[#e94560]">◆</span>
+     </div>
+     <div class="flex items-center gap-12 px-6 whitespace-nowrap">
+      <span class="text-2xl text-white/20 font-display">BRAND STRATEGY</span> <span class="text-[#e94560]">◆</span> <span class="text-2xl text-white/20 font-display">WEB DESIGN</span> <span class="text-[#e94560]">◆</span> <span class="text-2xl text-white/20 font-display">SOCIAL MEDIA</span> <span class="text-[#e94560]">◆</span> <span class="text-2xl text-white/20 font-display">BRAND SONGS</span> <span class="text-[#e94560]">◆</span> <span class="text-2xl text-white/20 font-display">DIGITAL MARKETING</span> <span class="text-[#e94560]">◆</span> <span class="text-2xl text-white/20 font-display">BRAND IDENTITY</span> <span class="text-[#e94560]">◆</span>
+     </div>
+    </div>
+   </section><!-- Services Section -->
+   <section id="services" class="w-full px-6 py-20">
+    <div class="max-w-7xl mx-auto">
+     <div class="text-center mb-16">
+      <span class="inline-block px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-sm text-gray-400 mb-4"> Our Expertise </span>
+      <h2 id="services-heading" class="font-display text-4xl md:text-5xl font-bold">Comprehensive Services That <span class="bg-gradient-to-r from-[#c9a961] to-[#d4b376] bg-clip-text text-transparent">Drive Results</span></h2>
+     </div>
+     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Service 1 -->
+      <div class="glow-card rounded-3xl p-8 fade-up stagger-1">
+       <div class="service-icon w-16 h-16 rounded-2xl bg-gradient-to-br from-[#e94560]/20 to-[#ff6b6b]/20 flex items-center justify-center mb-6 text-[#e94560]">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+        </svg>
+       </div>
+       <h3 class="font-display text-2xl font-bold mb-3">Brand Enhancer</h3>
+       <p class="text-gray-400 leading-relaxed">Amplify your brand's impact with strategic enhancements that make you stand out in a crowded marketplace.</p>
+      </div><!-- Service 2 -->
+      <div class="glow-card rounded-3xl p-8 fade-up stagger-2">
+       <div class="service-icon w-16 h-16 rounded-2xl bg-gradient-to-br from-[#06b6d4]/20 to-[#0ea5e9]/20 flex items-center justify-center mb-6 text-[#06b6d4]">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+        </svg>
+       </div>
+       <h3 class="font-display text-2xl font-bold mb-3">Brand Strategist</h3>
+       <p class="text-gray-400 leading-relaxed">Data-driven strategies that position your brand for success and create meaningful connections with your audience.</p>
+      </div><!-- Service 3 -->
+      <div class="glow-card rounded-3xl p-8 fade-up stagger-3">
+       <div class="service-icon w-16 h-16 rounded-2xl bg-gradient-to-br from-[#10b981]/20 to-[#06b6d4]/20 flex items-center justify-center mb-6 text-[#10b981]">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+        </svg>
+       </div>
+       <h3 class="font-display text-2xl font-bold mb-3">Brand Website</h3>
+       <p class="text-gray-400 leading-relaxed">Stunning, high-converting websites that tell your brand story and deliver exceptional user experiences.</p>
+      </div><!-- Service 4 -->
+      <div class="glow-card rounded-3xl p-8 fade-up stagger-4">
+       <div class="service-icon w-16 h-16 rounded-2xl bg-gradient-to-br from-[#f093fb]/20 to-[#e94560]/20 flex items-center justify-center mb-6 text-[#f093fb]">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" />
+        </svg>
+       </div>
+       <h3 class="font-display text-2xl font-bold mb-3">Brand Songs</h3>
+       <p class="text-gray-400 leading-relaxed">Original music and audio branding that creates emotional connections and makes your brand unforgettable.</p>
+      </div><!-- Service 5 -->
+      <div class="glow-card rounded-3xl p-8 fade-up stagger-5">
+       <div class="service-icon w-16 h-16 rounded-2xl bg-gradient-to-br from-[#fbbf24]/20 to-[#f97316]/20 flex items-center justify-center mb-6 text-[#fbbf24]">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" />
+        </svg>
+       </div>
+       <h3 class="font-display text-2xl font-bold mb-3">Social Media Management</h3>
+       <p class="text-gray-400 leading-relaxed">Engage and grow your audience with compelling content strategies across all social platforms.</p>
+      </div><!-- Service 6 -->
+      <div class="glow-card rounded-3xl p-8 fade-up stagger-6">
+       <div class="service-icon w-16 h-16 rounded-2xl bg-gradient-to-br from-[#8b5cf6]/20 to-[#6366f1]/20 flex items-center justify-center mb-6 text-[#8b5cf6]">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" /> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+        </svg>
+       </div>
+       <h3 class="font-display text-2xl font-bold mb-3">Website Management</h3>
+       <p class="text-gray-400 leading-relaxed">Keep your digital presence running smoothly with comprehensive maintenance and optimization services.</p>
+      </div>
+     </div>
+    </div>
+   </section><!-- About Section -->
+   <section id="about" class="w-full px-6 py-20">
+    <div class="max-w-7xl mx-auto">
+     <div class="glow-card rounded-3xl p-8 md:p-12 lg:p-16">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+       <div>
+        <span class="inline-block px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-sm text-gray-400 mb-4"> Our Philosophy </span>
+        <h2 class="font-display text-4xl md:text-5xl font-bold mb-6">We Build Empires, Not <span class="bg-gradient-to-r from-[#c9a961] to-[#d4b376] bg-clip-text text-transparent">Ordinary Brands</span></h2>
+        <p class="text-gray-500 text-lg leading-relaxed mb-8">At I.TEC GLOBAL, we partner with visionary leaders and elite enterprises that refuse to settle for mediocrity. Our approach combines deep strategic insight with world-class execution to create brands that command industries.</p>
+        <div class="space-y-4">
+         <div class="flex items-center gap-4">
+          <div class="w-10 h-10 rounded-full bg-gradient-to-r from-[#c9a961] to-[#a0826d] flex items-center justify-center flex-shrink-0">
+           <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+           </svg>
+          </div><span class="text-lg text-gray-400">Enterprise-grade strategies for elite clientele</span>
+         </div>
+         <div class="flex items-center gap-4">
+          <div class="w-10 h-10 rounded-full bg-gradient-to-r from-[#d4b376] to-[#a0826d] flex items-center justify-center flex-shrink-0">
+           <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+           </svg>
+          </div><span class="text-lg text-gray-400">Measurable ROI with luxury-focused metrics</span>
+         </div>
+         <div class="flex items-center gap-4">
+          <div class="w-10 h-10 rounded-full bg-gradient-to-r from-[#a0826d] to-[#c9a961] flex items-center justify-center flex-shrink-0">
+           <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+           </svg>
+          </div><span class="text-lg text-gray-400">White-glove concierge service 24/7</span>
+         </div>
+        </div>
+       </div>
+       <div class="relative">
+        <div class="aspect-square rounded-3xl bg-gradient-to-br from-[#c9a961]/15 via-[#a0826d]/10 to-[#d4b376]/15 flex items-center justify-center overflow-hidden">
+         <img src="https://i.ibb.co/hxzdxmh1/IMG-20260306-WA0004.jpg" alt="I.TEC GLOBAL Brand Symbol" class="w-full h-full object-cover" loading="lazy" onerror="console.error('Image failed to load:', this.src); this.style.display='none';">
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Portfolio Section -->
+   <section id="portfolio" class="w-full px-6 py-20">
+    <div class="max-w-7xl mx-auto">
+     <div class="text-center mb-16">
+      <span class="inline-block px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-sm text-gray-400 mb-4"> Our Work </span>
+      <h2 id="portfolio-heading" class="font-display text-4xl md:text-5xl font-bold">Award-Winning Projects That <span class="bg-gradient-to-r from-[#c9a961] to-[#d4b376] bg-clip-text text-transparent">Delivered Results</span></h2>
+      <p class="text-xl text-gray-400 max-w-2xl mx-auto mt-4">Explore our portfolio of transformative brand projects with documented success metrics.</p>
+     </div>
+     <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 relative"><!-- Portfolio Item 1 --> <a href="https://rivereataiafrica.github.io/a/" target="_blank" rel="noopener noreferrer" class="glow-card rounded-3xl overflow-hidden group cursor-pointer fade-up stagger-1">
+       <div class="aspect-video bg-gradient-to-br from-[#e94560]/20 to-[#ff6b6b]/20 flex items-center justify-center relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-r from-[#e94560] to-[#ff6b6b] opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
+        <div class="text-6xl">
+         🚀
+        </div>
+       </div>
+       <div class="p-6">
+        <h3 class="font-display text-2xl font-bold mb-2">Tech Startup Launch</h3>
+        <p class="text-gray-400 mb-4">Complete brand identity &amp; web presence for innovative SaaS platform</p>
+        <div class="flex items-center justify-between">
+         <span class="text-sm text-[#c9a961] font-semibold">+320% Growth</span>
+         <svg class="w-4 h-4 text-[#c9a961] group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+         </svg>
+        </div>
+       </div></a> <!-- Portfolio Item 2 --> <a href="https://houseoftiwaj.github.io/J/" target="_blank" rel="noopener noreferrer" class="glow-card rounded-3xl overflow-hidden group cursor-pointer fade-up stagger-2">
+       <div class="aspect-video bg-gradient-to-br from-[#06b6d4]/20 to-[#0ea5e9]/20 flex items-center justify-center relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-r from-[#06b6d4] to-[#0ea5e9] opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
+        <div class="text-6xl">
+         ✨
+        </div>
+       </div>
+       <div class="p-6">
+        <h3 class="font-display text-2xl font-bold mb-2">Luxury Fashion Brand</h3>
+        <p class="text-gray-400 mb-4">Premium digital experience with social media strategy</p>
+        <div class="flex items-center justify-between">
+         <span class="text-sm text-[#c9a961] font-semibold">+580% Engagement</span>
+         <svg class="w-4 h-4 text-[#c9a961] group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+         </svg>
+        </div>
+       </div></a> <!-- Portfolio Item 3 --> <a href="https://rivereataiafrica.github.io/Order/" target="_blank" rel="noopener noreferrer" class="glow-card rounded-3xl overflow-hidden group cursor-pointer fade-up stagger-3">
+       <div class="aspect-video bg-gradient-to-br from-[#10b981]/20 to-[#06b6d4]/20 flex items-center justify-center relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-r from-[#10b981] to-[#06b6d4] opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
+        <div class="text-6xl">
+         🎯
+        </div>
+       </div>
+       <div class="p-6">
+        <h3 class="font-display text-2xl font-bold mb-2">E-Commerce Revolution</h3>
+        <p class="text-gray-400 mb-4">Full-stack brand overhaul &amp; conversion optimization</p>
+        <div class="flex items-center justify-between">
+         <span class="text-sm text-[#c9a961] font-semibold">+450% Sales</span>
+         <svg class="w-4 h-4 text-[#c9a961] group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+         </svg>
+        </div>
+       </div></a> <!-- Portfolio Item 4 - Artist Brand Identity with Dropdown -->
+      <div class="relative fade-up stagger-4" style="z-index: 9999;"><button onclick="toggleArtistDropdown(event)" class="glow-card rounded-3xl overflow-hidden group cursor-pointer w-full text-left">
+        <div class="aspect-video bg-gradient-to-br from-[#f093fb]/20 to-[#e94560]/20 flex items-center justify-center relative overflow-hidden">
+         <div class="absolute inset-0 bg-gradient-to-r from-[#f093fb] to-[#e94560] opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
+         <div class="text-6xl">
+          🎵
+         </div>
+        </div>
+        <div class="p-6">
+         <h3 class="font-display text-2xl font-bold mb-2">Artist Brand Identity</h3>
+         <p class="text-gray-400 mb-4">Brand songs &amp; multimedia content strategy</p>
+         <div class="flex items-center justify-between">
+          <span class="text-sm text-[#c9a961] font-semibold">50M+ Streams</span>
+          <svg class="w-4 h-4 text-[#c9a961] group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+         </div>
+        </div></button> <!-- Artist Dropdown Menu -->
+       <div id="artist-dropdown" class="hidden absolute top-full left-0 mt-2 bg-gradient-to-b from-[#1a1a1a] to-[#0f0f0f] border border-[#c9a961]/20 rounded-2xl p-4 space-y-3" style="z-index: 10000; width: 320px;"><button onclick="playAudio('https://image2url.com/r2/default/audio/.-03344b64-6c74-4601-bdc9-9373e776a580.mp3')" class="w-full glow-card rounded-xl p-4 text-left hover:bg-[#c9a961]/10 transition-all">
+         <div class="flex items-center gap-3">
+          <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-[#f093fb]/30 to-[#e94560]/30 flex items-center justify-center text-xl flex-shrink-0">
+           🎵
+          </div>
+          <div>
+           <h4 class="font-display font-bold text-white text-sm">Track 1: Artist Anthem</h4>
+           <p class="text-xs text-gray-400">Signature sound</p>
+          </div>
+         </div></button> <button onclick="window.open('https://image2url.com/r2/default/images/.-ea2a5f90-0164-4b1f-8230-e96e5b333f10.png','_blank')" class="w-full glow-card rounded-xl p-4 text-left hover:bg-[#c9a961]/10 transition-all">
+         <div class="flex items-center gap-3">
+          <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-[#ec4899]/30 to-[#f472b6]/30 flex items-center justify-center text-xl flex-shrink-0">
+           🎁
+          </div>
+          <div>
+           <h4 class="font-display font-bold text-white text-sm">Track 2: Brand Beat</h4>
+           <p class="text-xs text-gray-400">Rhythmic identity</p>
+          </div>
+         </div></button> <button onclick="playAudio('https://image2url.com/r2/default/audio/.-b1d156d9-8dbc-4540-9645-5c3e69c380e5.mp3')" class="w-full glow-card rounded-xl p-4 text-left hover:bg-[#c9a961]/10 transition-all">
+         <div class="flex items-center gap-3">
+          <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-[#fbbf24]/30 to-[#f97316]/30 flex items-center justify-center text-xl flex-shrink-0">
+           ✨
+          </div>
+          <div>
+           <h4 class="font-display font-bold text-white text-sm">Track 3: Grand Finale</h4>
+           <p class="text-xs text-gray-400">Epic crescendo</p>
+          </div>
+         </div></button>
+       </div>
+      </div><!-- Portfolio Item 5 --> <a href="https://elmengineeringandprojects-cmyk.github.io/.elm/" target="_blank" rel="noopener noreferrer" class="glow-card rounded-3xl overflow-hidden group cursor-pointer fade-up stagger-5">
+       <div class="aspect-video bg-gradient-to-br from-[#fbbf24]/20 to-[#f97316]/20 flex items-center justify-center relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-r from-[#fbbf24] to-[#f97316] opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
+        <div class="text-6xl">
+         💼
+        </div>
+       </div>
+       <div class="p-6">
+        <h3 class="font-display text-2xl font-bold mb-2">Corporate Rebranding</h3>
+        <p class="text-gray-400 mb-4">Enterprise transformation &amp; internal communications</p>
+        <div class="flex items-center justify-between">
+         <span class="text-sm text-[#c9a961] font-semibold">+95% Adoption</span>
+         <svg class="w-4 h-4 text-[#c9a961] group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+         </svg>
+        </div>
+       </div></a><!-- Portfolio Item 6 --> <button onclick="toggleBirthdayDropdown(event)" class="glow-card rounded-3xl overflow-hidden group cursor-pointer fade-up stagger-6 text-left w-full">
+       <div class="aspect-video bg-gradient-to-br from-[#ec4899]/20 to-[#f472b6]/20 flex items-center justify-center relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-r from-[#ec4899] to-[#f472b6] opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
+        <div class="text-6xl">
+         🎂
+        </div>
+       </div>
+       <div class="p-6">
+        <div class="flex justify-between items-center">
+         <div>
+          <h3 class="font-display text-2xl font-bold mb-2">Birthday Surprise Song</h3>
+          <p class="text-gray-400 mb-4">Custom personalized birthday anthem with celebration vibes</p>
+          <div class="flex items-center">
+           <span class="text-sm text-[#c9a961] font-semibold">Exclusive Track</span>
+          </div>
+         </div>
+         <svg class="w-4 h-4 text-[#c9a961]" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+         </svg>
+        </div>
+       </div></button><!-- Birthday Dropdown Menu -->
+      <div id="birthday-dropdown" class="hidden absolute top-full left-0 right-0 mt-2 bg-gradient-to-b from-[#1a1a1a] to-[#0f0f0f] border border-[#c9a961]/20 rounded-2xl p-4 space-y-3 z-50 w-80 max-w-full">
+       <div class="w-full glow-card rounded-xl p-4 text-left">
+        <div class="flex items-center gap-3">
+         <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-[#f093fb]/30 to-[#e94560]/30 flex items-center justify-center text-xl flex-shrink-0">
+          🎵
+         </div>
+         <div>
+          <h4 class="font-display font-bold text-white text-sm">Box 1: Classic Celebration</h4>
+          <p class="text-xs text-gray-400">Upbeat birthday anthem</p>
+         </div>
+        </div>
+       </div>
+       <div class="w-full glow-card rounded-xl p-4 text-left">
+        <div class="flex items-center gap-3">
+         <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-[#ec4899]/30 to-[#f472b6]/30 flex items-center justify-center text-xl flex-shrink-0">
+          🎁
+         </div>
+         <div>
+          <h4 class="font-display font-bold text-white text-sm">Box 2: Luxury Vibes</h4>
+          <p class="text-xs text-gray-400">Premium jazz vibes</p>
+         </div>
+        </div>
+       </div>
+       <div class="w-full glow-card rounded-xl p-4 text-left">
+        <div class="flex items-center gap-3">
+         <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-[#fbbf24]/30 to-[#f97316]/30 flex items-center justify-center text-xl flex-shrink-0">
+          ✨
+         </div>
+         <div>
+          <h4 class="font-display font-bold text-white text-sm">Box 3: Epic Remix</h4>
+          <p class="text-xs text-gray-400">High-energy electronic</p>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div><!-- Portfolio Item 7 --> <a href="https://i.ibb.co/fGFxpmLT/file-. f933a8fa3ea38e5ce.png" target="_blank" rel="noopener noreferrer" class="glow-card rounded-3xl overflow-hidden group cursor-pointer fade-up stagger-1">
+      <div class="aspect-video bg-gradient-to-br from-[#8b5cf6]/20 to-[#6366f1]/20 flex items-center justify-center relative overflow-hidden">
+       <div class="absolute inset-0 bg-gradient-to-r from-[#8b5cf6] to-[#6366f1] opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
+       <div class="text-6xl">
+        🎨
+       </div>
+      </div>
+      <div class="p-6">
+       <h3 class="font-display text-2xl font-bold mb-2">Graphic Design</h3>
+       <p class="text-gray-400 mb-4">Visual identity systems &amp; branded collateral design</p>
+       <div class="flex items-center justify-between">
+        <span class="text-sm text-[#c9a961] font-semibold">5+ Award Wins</span>
+        <svg class="w-4 h-4 text-[#c9a961] group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+       </div>
+      </div></a>
+    </div>
+   </section>
+  </div><!-- CTA Section -->
+  <section id="contact" class="w-full px-6 py-20">
+   <div class="max-w-4xl mx-auto text-center">
+    <h2 class="font-display text-4xl md:text-6xl font-bold mb-6">Ready to <span class="bg-gradient-to-r from-[#e94560] via-[#ff6b6b] to-[#f093fb] bg-clip-text text-transparent">Transform</span> Your Brand?</h2>
+    <p class="text-xl text-gray-300 mb-10 max-w-2xl mx-auto">Let's create something extraordinary together. Get in touch and discover how we can elevate your brand to new heights.</p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+     <a href="https://wa.link/ldecwn" target="_blank" rel="noopener noreferrer" class="btn-glow px-10 py-5 bg-gradient-to-r from-[#e94560] to-[#ff6b6b] rounded-full font-semibold text-xl inline-block text-center"> Start Your Journey </a> <a href="mailto:iteeconceptglobal@gmail.com" class="px-10 py-5 rounded-full font-semibold text-xl border border-white/20 hover:bg-white/5 transition-all flex items-center justify-center gap-2">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+      </svg> Email Us </a>
+    </div>
+   </div>
+  </section><!-- Footer -->
+  <footer class="w-full px-6 py-12 border-t border-white/10">
+   <div class="max-w-7xl mx-auto">
+    <div class="grid md:grid-cols-4 gap-8 mb-12">
+     <div class="md:col-span-2">
+      <div class="flex items-center gap-3 mb-4">
+       <img src="https://i.ibb.co/Q7YZnCJy/IMG-20260306-WA0003.jpg" alt="I.TEC GLOBAL Logo" class="h-10 w-auto object-contain" loading="lazy" onerror="console.error('Logo failed to load:', this.src); this.style.display='none';"><span class="font-display font-bold text-lg bg-gradient-to-r from-[#c9a961] to-[#d4b376] bg-clip-text text-transparent">I.TEC GLOBAL</span>
+      </div>
+      <p class="text-gray-400 max-w-sm">I.TEC GLOBAL, A branch of I.TEE CONCEPT, BN:2619568. Transforming brands and creating unforgettable digital experiences since 2020. </p>
+     </div>
+     <div>
+      <h4 class="font-display font-bold mb-4">Services</h4>
+      <ul class="space-y-2 text-gray-400">
+       <li><a href="#" class="hover:text-white transition-colors">Brand Strategy</a></li>
+       <li><a href="#" class="hover:text-white transition-colors">Web Design</a></li>
+       <li><a href="#" class="hover:text-white transition-colors">Social Media</a></li>
+       <li><a href="#" class="hover:text-white transition-colors">Brand Songs</a></li>
+      </ul>
+     </div>
+    </div>
+    <div class="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
+     <p class="text-gray-500 text-sm">© 2020 I.TEC GLOBAL.All rights reserved.</p>
+     <div class="flex gap-6 text-gray-500 text-sm">
+      <a href="#" class="hover:text-white transition-colors">Privacy Policy</a> <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+     </div>
+    </div>
+   </div>
+  </footer>
+  <script>
+    // Audio player function
+    let audioPlayer = null;
+
+    function playAudio(url) {
+      if (!audioPlayer) {
+        audioPlayer = new Audio();
+      }
+      audioPlayer.src = url;
+      audioPlayer.play().catch(error => {
+        console.error('Error playing audio:', error);
+      });
+    }
+
+    // Default configuration
+    const defaultConfig = {
+      hero_title: "Elevate Your Brand To New Heights",
+      hero_subtitle: "We craft unforgettable brand experiences that captivate audiences and drive extraordinary growth.",
+      services_title: "Services That Transform",
+      portfolio_title: "Award-Winning Projects That Delivered Results",
+      cta_button_text: "Start Your Journey",
+      primary_color: "#e94560",
+      secondary_color: "#1a1a2e",
+      text_color: "#ffffff",
+      accent_color: "#06b6d4",
+      surface_color: "#0a0a0f",
+      font_family: "Syne",
+      font_size: 16
+    };
+
+    // Mobile menu toggle
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('hidden');
+    }
+
+    // Birthday dropdown toggle - just display, no auto-close
+    function toggleBirthdayDropdown(e) {
+      e.preventDefault();
+      const dropdown = document.getElementById('birthday-dropdown');
+      dropdown.classList.toggle('hidden');
+    }
+
+    // Artist dropdown toggle - just display, no auto-close
+    function toggleArtistDropdown(e) {
+      e.preventDefault();
+      const dropdown = document.getElementById('artist-dropdown');
+      dropdown.classList.toggle('hidden');
+    }
+
+    // Close dropdowns when clicking outside
+    document.addEventListener('click', function(e) {
+      const birthdayCard = document.querySelector('[onclick*="toggleBirthdayDropdown"]');
+      const artistCard = document.querySelector('[onclick*="toggleArtistDropdown"]');
+      
+      if (birthdayCard) {
+        const dropdown = document.getElementById('birthday-dropdown');
+        if (!birthdayCard.contains(e.target) && !dropdown.contains(e.target)) {
+          dropdown.classList.add('hidden');
+        }
+      }
+
+      if (artistCard) {
+        const dropdown = document.getElementById('artist-dropdown');
+        if (!artistCard.contains(e.target) && !dropdown.contains(e.target)) {
+          dropdown.classList.add('hidden');
+        }
+      }
+    });
+
+    // Initialize Element SDK
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange: async (config) => {
+          const heroTitle = document.getElementById('hero-title');
+          const heroSubtitle = document.getElementById('hero-subtitle');
+          const servicesHeading = document.getElementById('services-heading');
+          const portfolioHeading = document.getElementById('portfolio-heading');
+          const navCta = document.getElementById('nav-cta');
+
+          // Update text content
+          if (heroTitle) {
+            const titleText = config.hero_title || defaultConfig.hero_title;
+            const words = titleText.split(' ');
+            if (words.length > 2) {
+              heroTitle.innerHTML = `<span class="glow-text">${words[0]}</span> ${words.slice(1, 3).join(' ')}<br/><span class="bg-gradient-to-r from-[${config.primary_color || defaultConfig.primary_color}] via-[#ff6b6b] to-[#f093fb] bg-clip-text text-transparent">${words.slice(3).join(' ')}</span>`;
+            } else {
+              heroTitle.textContent = titleText;
+            }
+          }
+
+          if (heroSubtitle) {
+            heroSubtitle.textContent = config.hero_subtitle || defaultConfig.hero_subtitle;
+          }
+
+          if (servicesHeading) {
+            const servicesText = config.services_title || defaultConfig.services_title;
+            const servicesWords = servicesText.split(' ');
+            if (servicesWords.length > 1) {
+              const lastWord = servicesWords.pop();
+              servicesHeading.innerHTML = `${servicesWords.join(' ')} <span class="bg-gradient-to-r from-[${config.primary_color || defaultConfig.primary_color}] to-[#ff6b6b] bg-clip-text text-transparent">${lastWord}</span>`;
+            } else {
+              servicesHeading.textContent = servicesText;
+            }
+          }
+
+          if (portfolioHeading) {
+            const portfolioText = config.portfolio_title || defaultConfig.portfolio_title;
+            const portfolioWords = portfolioText.split(' ');
+            if (portfolioWords.length > 1) {
+              const lastWord = portfolioWords.pop();
+              portfolioHeading.innerHTML = `${portfolioWords.join(' ')} <span class="bg-gradient-to-r from-[${config.primary_color || defaultConfig.primary_color}] to-[#d4b376] bg-clip-text text-transparent">${lastWord}</span>`;
+            } else {
+              portfolioHeading.textContent = portfolioText;
+            }
+          }
+
+          const ctaText = config.cta_button_text || defaultConfig.cta_button_text;
+          if (navCta) navCta.textContent = ctaText === defaultConfig.cta_button_text ? 'Get Started' : ctaText;
+
+          // Apply colors
+          const primaryColor = config.primary_color || defaultConfig.primary_color;
+          const secondaryColor = config.secondary_color || defaultConfig.secondary_color;
+          const textColor = config.text_color || defaultConfig.text_color;
+
+          document.body.style.color = textColor;
+
+          // Apply font
+          const fontFamily = config.font_family || defaultConfig.font_family;
+          const baseFontStack = 'sans-serif';
+          document.querySelectorAll('.font-display').forEach(el => {
+            el.style.fontFamily = `${fontFamily}, ${baseFontStack}`;
+          });
+
+          // Apply font size scaling
+          const baseSize = config.font_size || defaultConfig.font_size;
+          document.body.style.fontSize = `${baseSize}px`;
+        },
+        mapToCapabilities: (config) => ({
+          recolorables: [
+            {
+              get: () => config.surface_color || defaultConfig.surface_color,
+              set: (value) => { config.surface_color = value; window.elementSdk.setConfig({ surface_color: value }); }
+            },
+            {
+              get: () => config.secondary_color || defaultConfig.secondary_color,
+              set: (value) => { config.secondary_color = value; window.elementSdk.setConfig({ secondary_color: value }); }
+            },
+            {
+              get: () => config.text_color || defaultConfig.text_color,
+              set: (value) => { config.text_color = value; window.elementSdk.setConfig({ text_color: value }); }
+            },
+            {
+              get: () => config.primary_color || defaultConfig.primary_color,
+              set: (value) => { config.primary_color = value; window.elementSdk.setConfig({ primary_color: value }); }
+            },
+            {
+              get: () => config.accent_color || defaultConfig.accent_color,
+              set: (value) => { config.accent_color = value; window.elementSdk.setConfig({ accent_color: value }); }
+            }
+          ],
+          borderables: [],
+          fontEditable: {
+            get: () => config.font_family || defaultConfig.font_family,
+            set: (value) => { config.font_family = value; window.elementSdk.setConfig({ font_family: value }); }
+          },
+          fontSizeable: {
+            get: () => config.font_size || defaultConfig.font_size,
+            set: (value) => { config.font_size = value; window.elementSdk.setConfig({ font_size: value }); }
+          }
+        }),
+        mapToEditPanelValues: (config) => new Map([
+          ["hero_title", config.hero_title || defaultConfig.hero_title],
+          ["hero_subtitle", config.hero_subtitle || defaultConfig.hero_subtitle],
+          ["services_title", config.services_title || defaultConfig.services_title],
+          ["portfolio_title", config.portfolio_title || defaultConfig.portfolio_title],
+          ["cta_button_text", config.cta_button_text || defaultConfig.cta_button_text]
+        ])
+      });
+    }
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9d891d3582ce070c',t:'MTc3Mjg4MTQxMS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
